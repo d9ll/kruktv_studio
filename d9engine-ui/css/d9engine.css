@@ -1,65 +1,140 @@
 /* 
-   d9engine UI v1.0.0
-   Design System for KruK TV Studio
+    D9 Engine - Core Stylesheet 
+    Version: 1.0.0
+    Author: D9 Team
 */
 
+/* ==========================================================================
+   1. ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ И СБРОС (ROOT & BASE)
+   ========================================================================== */
 :root {
-    /* Фирменная палитра */
-    --d9-red: #ff4444;
-    --d9-red-glow: rgba(255, 68, 68, 0.4);
-    --d9-gold: #ffd700;
-    --d9-gold-glow: rgba(255, 215, 0, 0.3);
-    --d9-dark: #0f0f0f;
-    --d9-card-bg: #1a1a1a;
-    
-    /* Шрифты и размеры */
-    --d9-radius: 12px;
-    --d9-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --main-color: #f1c40f;
+    --dark-bg: #1a1a1a;
+    --card-bg: #2a2a2a;
+    --text-white: #ffffff;
+    --text-gray: #aaaaaa;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+    --gold-gradient: linear-gradient(45deg, #f1c40f, #f39c12);
 }
 
-/* Стеклянная карточка d9 */
-.d9-card {
-    background: var(--d9-card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--d9-radius);
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. СИСТЕМА УВЕДОМЛЕНИЙ (ALERTS & BROADCASTS)
+   ========================================================================== */
+.admin-broadcast-fixed {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(231, 76, 60, 0.9);
+    padding: 15px 30px;
+    border-radius: 10px;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border-left: 5px solid #fff;
+    animation: slideInDown 0.5s ease;
+}
+
+.notification-badge {
+    background: var(--main-color);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+/* ==========================================================================
+   3. ИНТЕРФЕЙС ГЕЙМПЛЕЯ (GAME UI & ROULETTE)
+   ========================================================================== */
+.roulette-container {
+    background: var(--card-bg);
+    border: 2px solid #333;
+    border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: var(--d9-transition);
+    text-align: center;
 }
 
-.d9-card-premium {
-    border: 1px solid var(--d9-gold-glow);
-    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-}
-
-/* Главная кнопка-кликер d9 */
-.d9-main-btn {
-    width: 200px;
-    height: 200px;
+.roulette-wheel {
+    transition: transform 5s cubic-bezier(0.15, 0, 0.15, 1);
+    border: 5px solid var(--main-color);
     border-radius: 50%;
-    background: radial-gradient(circle, var(--d9-red) 0%, #800000 100%);
-    border: 8px solid rgba(255,255,255,0.05);
-    box-shadow: 0 0 30px var(--d9-red-glow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.click-area {
     cursor: pointer;
-    user-select: none;
-    transition: transform 0.1s ease;
+    transition: transform 0.1s active;
 }
 
-.d9-main-btn:active {
-    transform: scale(0.92);
+.click-area:active {
+    transform: scale(0.95);
 }
 
-/* Текстовые стили */
-.d9-title {
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+/* ==========================================================================
+   4. СИСТЕМА РАНГОВ И БЕЙДЖИ (RANKS & BADGES)
+   ========================================================================== */
+.creator-badge {
+    color: #e74c3c;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
 }
 
-.d9-gold-text {
-    color: var(--d9-gold);
-    text-shadow: 0 0 10px var(--d9-gold-glow);
+.moderator-badge {
+    color: #3498db;
+}
+
+.premium-glow {
+    box-shadow: 0 0 15px var(--main-color);
+    border: 1px solid var(--main-color);
+}
+
+/* ==========================================================================
+   5. АДАПТИВНОСТЬ (MOBILE RESPONSIVENESS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    button {
+        padding: 15px 20px; /* Увеличиваем область нажатия */
+        font-size: 1.1rem;
+    }
+
+    .roulette-wheel {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .sidebar {
+        display: none; /* Скрываем боковое меню на мобилках */
+    }
+}
+
+/* ==========================================================================
+   6. АНИМАЦИИ (ANIMATIONS)
+   ========================================================================== */
+@keyframes slideInDown {
+    from { transform: translate(-50%, -100%); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.ultra-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 25px var(--main-color); }
+    100% { transform: scale(1); }
 }
