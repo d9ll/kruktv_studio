@@ -1,0 +1,65 @@
+/* 
+   d9engine UI v1.0.0
+   Design System for KruK TV Studio
+*/
+
+:root {
+    /* Фирменная палитра */
+    --d9-red: #ff4444;
+    --d9-red-glow: rgba(255, 68, 68, 0.4);
+    --d9-gold: #ffd700;
+    --d9-gold-glow: rgba(255, 215, 0, 0.3);
+    --d9-dark: #0f0f0f;
+    --d9-card-bg: #1a1a1a;
+    
+    /* Шрифты и размеры */
+    --d9-radius: 12px;
+    --d9-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Стеклянная карточка d9 */
+.d9-card {
+    background: var(--d9-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--d9-radius);
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: var(--d9-transition);
+}
+
+.d9-card-premium {
+    border: 1px solid var(--d9-gold-glow);
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+}
+
+/* Главная кнопка-кликер d9 */
+.d9-main-btn {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--d9-red) 0%, #800000 100%);
+    border: 8px solid rgba(255,255,255,0.05);
+    box-shadow: 0 0 30px var(--d9-red-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease;
+}
+
+.d9-main-btn:active {
+    transform: scale(0.92);
+}
+
+/* Текстовые стили */
+.d9-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.d9-gold-text {
+    color: var(--d9-gold);
+    text-shadow: 0 0 10px var(--d9-gold-glow);
+}
